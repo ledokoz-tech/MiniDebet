@@ -1,184 +1,180 @@
+<style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        color: #1f2937;
+        line-height: 1.6;
+        background-color: #f9fafb;
+        margin: 0;
+        padding: 0 2rem;
+    }
+    h1, h2, h3 {
+        font-weight: bold;
+        margin-bottom: 0.5rem;
+    }
+    h1 {
+        font-size: 3em;
+        color: #1f2937;
+    }
+    h2 {
+        color: #4a90e2;
+        border-bottom: 2px solid #e5e7eb;
+        padding-bottom: 0.3rem;
+        margin-top: 2rem;
+    }
+    h3 {
+        color: #10b981;
+        margin-top: 1.5rem;
+    }
+    p {
+        font-size: 1.05em;
+        margin-bottom: 1rem;
+    }
+    ul {
+        margin-left: 1.5rem;
+    }
+    blockquote {
+        border-left: 5px solid #4a90e2;
+        padding-left: 1rem;
+        color: #374151;
+        font-style: italic;
+        background-color: #e0f2fe;
+        margin: 1rem 0;
+        border-radius: 5px;
+    }
+    .center {
+        text-align: center;
+    }
+    .card {
+        background-color: #fff;
+        border-radius: 12px;
+        padding: 1rem 1.5rem;
+        margin: 1rem 0;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    }
+    .highlight {
+        background-color: #fef3c7;
+        padding: 0.3rem 0.5rem;
+        border-radius: 5px;
+        font-weight: bold;
+    }
+    .button {
+        display: inline-block;
+        background-color: #4a90e2;
+        color: #fff;
+        padding: 0.5rem 1rem;
+        border-radius: 6px;
+        text-decoration: none;
+        font-weight: bold;
+        margin-top: 0.5rem;
+    }
+    code {
+        background-color: #f3f4f6;
+        padding: 0.2rem 0.4rem;
+        border-radius: 4px;
+        font-family: monospace;
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 1rem 0;
+    }
+    th, td {
+        border: 1px solid #e5e7eb;
+        padding: 0.5rem 1rem;
+        text-align: left;
+    }
+    th {
+        background-color: #f3f4f6;
+    }
+</style>
+</head>
+<body>
 
-<div align="center">
-
-# 🇩🇪 MiniDebet
-### The boring, high-performance invoicing SaaS for German freelancers.
-
-[Frontend: React] · [Backend: Rust] · [DB: SQLite]
-
+<div class="center">
+    <h1>MiniDebet</h1>
+    <p style="font-size:1.2em; color:gray;"><em>The boring, high-performance invoicing SaaS for German freelancers</em></p>
+    <p><em>[Frontend: React] · [Backend: Rust] · [DB: PostgreSQL]</em></p>
 </div>
 
----
+<div class="card">
+    <h2>🚀 Mission</h2>
+    <p>MiniDebet is a utility-first financial tool. We are not trying to reinvent accounting. We are building a specialized, high-performance engine that solves exactly three problems for German freelancers:</p>
+    <ul>
+        <li><strong>Legally compliant invoices</strong> (GoBD &amp; §19 UStG ready)</li>
+        <li><strong>Anxiety-free tax estimation</strong> (VAT vs. Flat tax)</li>
+        <li><strong>Clean data exports</strong> for the Steuerberater</li>
+    </ul>
+    <p><em>Why this exists:</em> To generate predictable, recurring revenue that funds the bigger vision (<code>LedokozOS</code>).</p>
+    <blockquote>"Boring technology pays for the future."</blockquote>
+</div>
 
-## 1. The Mission
+<div class="card">
+    <h2>⚙️ Tech Stack</h2>
 
-MiniDebet is a **utility-first financial tool**. We are not trying to reinvent accounting. We are building a specialized, high-performance engine that solves exactly three problems for German freelancers:
+<h3>🎨 Frontend (Client Side)</h3>
+<ul>
+        <li>Framework: React (v18+)</li>
+        <li>Styling: Tailwind CSS (Clean, minimal, system-first aesthetic)</li>
+        <li>State: Zustand / React Query (Server state management)</li>
+        <li>Build: Vite</li>
+    </ul>
 
-1.  **Legally compliant invoices** (GoBD & §19 UStG ready).
-2.  **Anxiety-free tax estimation** (VAT vs. Flat tax).
-3.  **Clean data exports** for the Steuerberater.
+ <h3>⚡ Backend (Server Side)</h3>
+    <ul>
+        <li>Language: Rust</li>
+        <li>Framework: Axum</li>
+        <li>Async Runtime: Tokio</li>
+        <li>Memory safety + low latency + strict type enforcement</li>
+    </ul>
 
-**Why this exists:** To generate predictable, recurring revenue that funds the bigger vision (LedokozOS).
+ <h3>💾 Data & Infrastructure</h3>
+    <ul>
+        <li>Database: PostgreSQL (ACID compliant)</li>
+        <li>ORM: Diesel / SeaORM</li>
+        <li>Hosting: Hetzner Cloud</li>
+        <li>Payments: Stripe (Webhooks handled by Rust)</li>
+        <li>Files: S3-compatible object storage for PDF archiving</li>
+    </ul>
+</div>
 
-> *"Boring technology pays for the future."*
+<div class="card">
+    <h2>🎯 Target Audience</h2>
+    <p><strong>✅ Who this is for:</strong></p>
+    <ul>
+        <li>Selbstständige (Sole proprietors) in Germany</li>
+        <li>Freelancers in Tech, Design, Consulting</li>
+        <li>Users tracking money in Excel or paper</li>
+        <li>Needs: Invoicing + basic expense tracking</li>
+    </ul>
+    <p><strong>🚫 Who this is NOT for:</strong></p>
+    <ul>
+        <li>GmbHs / AGs</li>
+        <li>Merchants (Handelsregistereintragung)</li>
+        <li>Companies needing payroll (Lohnabrechnung) or complex depreciation</li>
+    </ul>
+</div>
 
----
+<div class="card">
+    <h2>💼 MVP Feature Scope</h2>
+    <ul>
+        <li><span class="highlight">Authentication:</span> Email/Password (JWT tokens, secure sessions)</li>
+        <li><span class="highlight">Dashboard:</span> Revenue overview, open invoices, quick "Create New Invoice"</li>
+        <li><span class="highlight">Invoice Builder:</span> Customers, line items, auto-totals, PDF generation, download/email</li>
+        <li><span class="highlight">Settings:</span> Kleinunternehmer toggle, company data, tax number input</li>
+        <li><span class="highlight">Exports:</span> CSV for DATEV import</li>
+    </ul>
+</div>
 
-## 2. The Tech Stack (Performance First)
+<div class="card center">
+    <h2>💳 Pricing</h2>
+    <p>Simple flat pricing:</p>
+    <ul>
+        <li>Free Tier: 3 invoices per month</li>
+        <li>Pro (€15/mo): Unlimited invoices + PDF branding + Exports</li>
+    </ul>
+    <p>Accepted: Credit Card & SEPA via Stripe</p>
+    <a href="#" class="button">Subscribe Now</a>
+</div>
 
-We chose modern, type-safe technologies to ensure correctness and speed.
-
-### 🎨 Frontend (Client Side)
-*   **Framework:** React (v18+)
-*   **Styling:** Tailwind CSS (For a clean, minimal, system-first aesthetic)
-*   **State:** Zustand or React Query (Server state management)
-*   **Build:** Vite
-
-### ⚙️ Backend (Server Side)
-*   **Language:** Rust
-*   **Framework:** Axum
-*   **Async Runtime:** Tokio
-*   **Why Rust:** Memory safety, extremely low latency, and strict type enforcement prevent business logic errors.
-
-### 💾 Data & Infrastructure
-*   **Database:** PostgreSQL (ACID compliance is non-negotiable for financial data).
-*   **ORM:** Diesel (or SeaORM) for Rust type-safe queries.
-*   **Hosting:** Hetzner Cloud (CX series).
-*   **Payments:** Stripe (Webhooks handled by Rust).
-*   **Files:** Object Storage (S3 compatible) for PDF archiving.
-
----
-
-## 3. Target Audience
-
-### ✅ Who this is for
-*   **Selbstständige** (Sole proprietors) in Germany.
-*   Freelancers in Tech, Design, and Consulting.
-*   Users who currently track money in Excel or paper.
-*   **Needs:** Invoicing + basic expense tracking.
-
-### 🚫 Who this is NOT for
-*   GmbHs / AGs (Corp structures).
-*   Merchants (Handelsregistereintragung).
-*   Companies needing payroll (Lohnabrechnung) or complex depreciation.
-
----
-
-## 4. Legal Compliance (Germany)
-
-The app is built around strict German tax laws.
-
-**Invoice Mandatory Fields (GoBD):**
-*   Full Name & Address (Seller + Buyer).
-*   Tax Number (**Steuernummer**) or VAT ID (**USt-IdNr.**).
-*   Invoice Number (Sequential, unique, no gaps).
-*   Invoice Date & Delivery Date.
-*   Net Amount, VAT Rate (%), VAT Amount.
-*   Gross Amount.
-
-**The Kleinunternehmerregelung (§19 UStG):**
-*   If enabled, **no VAT** is calculated.
-*   Mandatory Note on Invoice:
-    > *"Gemäß §19 UStG wird keine Umsatzsteuer berechnet."*
-
----
-
-## 5. MVP Feature Scope
-
-**Phase 1 is strictly about invoicing.**
-
-#### 5.1 Authentication
-*   Email/Password (JWT tokens handled by Rust).
-*   Secure session management (HttpOnly cookies).
-
-#### 5.2 Dashboard
-*   Overview of Revenue (Current Month vs. Last Month).
-*   Open invoices counter.
-*   Quick action: "Create New Invoice".
-
-#### 5.3 Invoice Builder
-*   Select Customer (or create new on fly).
-*   Add Line Items (Description, Qty, Rate).
-*   Auto-calculate totals (Net, VAT 7%, VAT 19%, Gross).
-*   **Generate PDF** (Server-side rendering using `lopdf` or similar Rust crate).
-*   Download / Email PDF.
-
-#### 5.4 Settings
-*   Toggle **Kleinunternehmer** status (recalculates all logic).
-*   Set company letterhead data.
-*   Input Tax Number.
-
-#### 5.5 Exports
-*   Export to CSV (Date, Sender, Receiver, Net, Tax, Type).
-*   Format ready for DATEV import.
-
----
-
-## 6. System Architecture
-
-```
-[Client: React SPA]
-       ⬇
-[API Gateway: Nginx Reverse Proxy]
-       ⬇
-[Application Server: Rust (Actix/Axum)]
-       ⬇
-[Database: PostgreSQL]
-```
-
-*   **PDF Generation:** Handled asynchronously by the Rust backend to prevent UI blocking.
-*   **API Design:** RESTful. JSON over HTTPS.
-
----
-
-## 8. API Design Principles
-
-The Rust backend will expose a clean REST API.
-
-*   **Base URL:** `/api/v1`
-*   **Content-Type:** `application/json`
-*   **Error Handling:** Standardized JSON error responses.
-
-**Example Endpoints:**
-
-| Method | Endpoint | Description |
-| :--- | :--- | :--- |
-| `POST` | `/auth/register` | Create new user |
-| `POST` | `/auth/login` | Exchange creds for JWT |
-| `GET` | `/profile` | Get user settings |
-| `PUT` | `/profile` | Update user settings |
-| `GET` | `/invoices` | List all invoices (paginated) |
-| `POST` | `/invoices` | Create new invoice |
-| `GET` | `/invoices/:id/pdf` | Stream PDF bytes |
-
----
-
-## 9. Pricing Strategy
-
-Simple, flat pricing. No complex tiers.
-
-*   **Free Tier:** 3 Invoices per month.
-*   **Pro (€15/mo):** Unlimited invoices + PDF branding + Exports.
-*   **Accepted:** Credit Card (Stripe) & SEPA Direct Debit (via Stripe).
-
----
-
-## 10. AI Coding Instructions
-
-If you are an AI assistant generating code for MiniDebet, follow these rules:
-
-1.  **Language:** Use **Rust** for backend, **React** for frontend.
-2.  **Style:** Keep the UI minimal (Apple-esque or Stripe-like). Avoid clutter.
-3.  **Strictness:** Do not add "nice-to-have" features. If it's not in Section 5, don't code it.
-4.  **Error Handling:** Rust code must handle `Result<T, E>` properly; never use `.unwrap()` in production logic.
-5.  **German Context:** All invoice templates must use proper German terminology.
-
----
-
-## 11. Founder Note
-
-This app is the fuel for LedokozOS. 
-We prioritize **stability over speed of development**. 
-A correct invoice that never crashes is better than a buggy app with 100 features.
-
-**Let's build MiniDebet.**
+</body>
+</html>
