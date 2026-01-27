@@ -25,6 +25,12 @@ help: ## Show this help
 	@echo "Database:"
 	@echo "  migrate           Run database migrations"
 	@echo "  reset-db          Reset database"
+	@echo ""
+	@echo "Deployment:"
+	@echo "  deploy-preview    Deploy to Cloudflare preview"
+	@echo "  deploy-staging    Deploy to Cloudflare staging"
+	@echo "  deploy-prod       Deploy to Cloudflare production"
+	@echo "  deploy-all        Full deployment (build+migrate+deploy)"
 
 # Setup commands
 setup-frontend:
@@ -71,5 +77,34 @@ migrate:
 reset-db:
 	rm -f backend/minidebet.db
 	make migrate
+
+# Deployment commands
+deploy-preview:
+	@if [ -f "scripts/deploy-worker.sh" ]; then \
+		./scripts/deploy-worker.sh deploy-preview; \
+	else \
+		scripts\deploy-worker.bat deploy-preview; \
+	fi
+
+deploy-staging:
+	@if [ -f "scripts/deploy-worker.sh" ]; then \
+		./scripts/deploy-worker.sh deploy-staging; \
+	else \
+		scripts\deploy-worker.bat deploy-staging; \
+	fi
+
+deploy-prod:
+	@if [ -f "scripts/deploy-worker.sh" ]; then \
+		./scripts/deploy-worker.sh deploy-prod; \
+	else \
+		scripts\deploy-worker.bat deploy-prod; \
+	fi
+
+deploy-all:
+	@if [ -f "scripts/deploy-worker.sh" ]; then \
+		./scripts/deploy-worker.sh full; \
+	else \
+		scripts\deploy-worker.bat full; \
+	fi
 
 .DEFAULT_GOAL := help

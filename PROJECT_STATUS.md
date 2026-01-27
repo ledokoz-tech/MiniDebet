@@ -38,6 +38,8 @@
 - [x] Database design documentation
 - [x] Testing strategy guide
 - [x] Documentation index and navigation
+- [x] Cloudflare deployment documentation
+- [x] Automated migration deployment scripts
 
 ## 🚀 Getting Started
 
@@ -97,7 +99,8 @@ minidebet/
 │   ├── development/        # Setup and development guides
 │   ├── database/           # Database schema and design
 │   ├── api/               # API reference and examples
-│   └── testing/           # Testing strategies and guides
+│   ├── testing/           # Testing strategies and guides
+│   └── deployment/        # Cloudflare deployment guides
 ├── Makefile
 └── README.md
 ```

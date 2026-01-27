@@ -49,6 +49,15 @@ Comprehensive testing approach and guidelines.
 - Test data management and fixtures
 - CI/CD integration and coverage goals
 
+### ☁️ [Cloudflare Deployment](./deployment/cloudflare-deployment.md)
+
+Deploy to Cloudflare Workers with automatic migration deployment.
+
+- WASM compilation setup
+- Automated migration deployment
+- Environment configuration
+- CI/CD integration guides
+
 ## Quick Links
 
 - [Project Status](../PROJECT_STATUS.md) - Current development progress
@@ -61,6 +70,7 @@ Comprehensive testing approach and guidelines.
 2. **Understanding the System**: Read the [Architecture Documentation](./architecture/system-architecture.md)
 3. **Working with Data**: Review the [Database Design](./database/database-design.md)
 4. **Building Features**: Check the [API Reference](./api/api-reference.md) and [Testing Strategy](./testing/testing-strategy.md)
+5. **Deployment**: Learn about [Cloudflare Deployment](./deployment/cloudflare-deployment.md)
 
 ## Support
 

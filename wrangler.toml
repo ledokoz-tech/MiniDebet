@@ -1,5 +1,5 @@
 name = "minidebet"
-main = "backend/src/main.rs"
+main = "backend/worker/dist/worker.js"
 compatibility_date = "2024-01-27"
 
 [vars]
@@ -10,7 +10,7 @@ tag = "v1"
 new_classes = ["MinidebetWorker"]
 
 [build]
-command = "cargo install -q worker-build && worker-build --release"
+command = "cd backend/worker && worker-build --release"
 
 [env.production]
 workers_dev = false
@@ -18,3 +18,19 @@ route = { pattern = "api.minidebet.de/*", zone_name = "minidebet.de" }
 
 [env.staging]
 workers_dev = true
+
+# D1 Database Configuration
+[[ d1_databases ]]
+binding = "DB"
+database_name = "minidebet"
+database_id = ""
+
+[env.production]
+workers_dev = false
+route = { pattern = "api.minidebet.de/*", zone_name = "minidebet.de"}
+
+# D1 Database Configuration
+[[ d1_databases ]]
+binding = "DB"
+database_name = "minidebet"
+database_id = ""
