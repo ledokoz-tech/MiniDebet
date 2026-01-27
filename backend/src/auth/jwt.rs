@@ -1,7 +1,7 @@
 use jsonwebtoken::{decode, encode, DecodingKey, EncodingKey, Header, Validation};
 use serde::{Deserialize, Serialize};
 use std::time::{SystemTime, UNIX_EPOCH};
-use crate::models::User;
+use crate::models::user::User;
 
 const JWT_SECRET: &str = "your-secret-key-change-in-production";
 const JWT_EXPIRATION_HOURS: u64 = 24;

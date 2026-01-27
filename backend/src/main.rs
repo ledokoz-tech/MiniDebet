@@ -2,7 +2,7 @@ use axum::{
     routing::{get, post},
     Router,
 };
-use std::net::SocketAddr;
+
 use tower_http::cors::CorsLayer;
 use tracing_subscriber;
 
@@ -37,6 +37,7 @@ async fn main() {
         .layer(CorsLayer::permissive());
 
     // Run our application
+    let addr = "0.0.0.0:3000";
     let listener = tokio::net::TcpListener::bind(addr).await.unwrap();
     println!("listening on {}", addr);
     

@@ -6,8 +6,8 @@ use axum::{
 };
 use serde::{Deserialize, Serialize};
 use crate::db::Db;
-use crate::models::User;
-use crate::auth::jwt::{generate_token, Claims};
+use crate::models::user::User;
+use crate::auth::jwt::generate_token;
 use bcrypt::{verify, hash, DEFAULT_COST};
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -18,14 +18,13 @@ pub struct LoginRequest {
 
 #[derive(Debug, Serialize)]
 pub struct LoginResponse {
-    pub user: User,
     pub token: String,
 }
 
 pub async fn login(
-    State(db): State<Db>,
+    State(_db): State<Db>,
     AxumJson(payload): AxumJson<LoginRequest>,
-) -> Result<(StatusCode, Json<LoginResponse>), (StatusCode, String)> {
+) -> Result<Json<LoginResponse>, (StatusCode, String)> {
     // In a real implementation, you'd query the database
     // This is a simplified example
     
@@ -52,9 +51,8 @@ pub async fn login(
         .map_err(|_| (StatusCode::INTERNAL_SERVER_ERROR, "Failed to generate token".to_string()))?;
 
     let response = LoginResponse {
-        user,
         token,
     };
 
-    Ok((StatusCode::OK, Json(response)))
+    Ok(Json(response))
 }

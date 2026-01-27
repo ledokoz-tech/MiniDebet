@@ -6,7 +6,7 @@ use axum::{
 };
 use serde::{Deserialize, Serialize};
 use crate::db::Db;
-use crate::models::{User, NewUser};
+use crate::models::user::{User, NewUser};
 use bcrypt::{hash, DEFAULT_COST};
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -29,7 +29,7 @@ pub struct CreateUserResponse {
 }
 
 pub async fn create_user(
-    State(db): State<Db>,
+    State(_db): State<Db>,
     AxumJson(payload): AxumJson<CreateUserRequest>,
 ) -> Result<(StatusCode, Json<CreateUserResponse>), (StatusCode, String)> {
     // Hash the password
