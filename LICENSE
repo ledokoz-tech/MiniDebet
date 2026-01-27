@@ -1,44 +1,57 @@
-MiniDebet License Agreement
+MiniDebet Proprietary License Agreement
 
-Copyright (c) 2026 MiniDebet
+Copyright (c) 2026 MiniDebet - All Rights Reserved
 
-SOURCE AVAILABLE LICENSE
+COMMERCIAL LICENSE AGREEMENT
 
-This software is provided "as is" and "as available" without warranty of any kind,
-express or implied, including but not limited to the warranties of merchantability,
-fitness for a particular purpose and noninfringement.
+This software and its source code are proprietary and confidential.
+Unauthorized use, copying, distribution, or modification is strictly prohibited.
 
-PERMISSIONS:
-- You may view and examine the source code
-- You may run and use the software
-- You may modify the software for your own use
-- You may contribute improvements back to the project
+LICENSE OPTIONS:
 
-RESTRICTIONS:
-- You may NOT distribute or sublicense the software
-- You may NOT use the software in commercial products or services
-- You may NOT remove or modify this license notice
-- You may NOT claim ownership or authorship of the software
-- You may NOT use the MiniDebet name or trademarks without permission
+1. PERSONAL/DEVELOPMENT LICENSE - €49
+   - For individual developers learning and evaluation
+   - Single developer usage only
+   - No commercial or production use
+   - No redistribution rights
+   - 1 year access to source code
+   - Email: jamshaid@ledokoz.com to purchase
 
-ATTRIBUTION:
-Any distribution of modified versions must clearly indicate that they are
-derivative works and include attribution to the original MiniDebet project.
+2. COMMERCIAL LICENSE - €299/year
+   - For business use and production deployment
+   - Up to 5 developers per license
+   - Redistribution rights within your organization
+   - Priority support included
+   - Email: jamshaid@ledokoz.com to purchase
 
-PATENT GRANT:
-The licensor grants you a patent license to make, use, and distribute the software,
-subject to the restrictions in this license.
+3. ENTERPRISE LICENSE - Custom pricing
+   - Unlimited developers
+   - Full redistribution rights
+   - Dedicated support
+   - Custom feature development
+   - Email: jamshaid@ledokoz.com for enterprise inquiries
 
-TERMINATION:
-This license terminates automatically if you violate any of its terms.
+PROHIBITED ACTIVITIES:
+- Using the software without a valid license
+- Distributing or sharing the source code
+- Modifying and using for commercial purposes
+- Reverse engineering for competitive purposes
+- Removing or altering copyright notices
+
+SOURCE CODE ACCESS:
+Source code is available only to licensed users who have purchased
+the appropriate license package. Contact jamshaid@ledokoz.com for
+licensing information and access.
+
+TERMS:
+- Licenses are annual and require renewal
+- All licenses include access to updates and security patches
+- Violation of terms results in immediate license termination
+- MiniDebet reserves the right to audit license compliance
 
 DISCLAIMER:
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
-INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
-PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
-HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
-OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
-SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+THE SOFTWARE IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND.
+IN NO EVENT SHALL THE AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES,
+OR OTHER LIABILITY ARISING FROM USE OF THIS SOFTWARE.
 
-This license balances openness with protection of the intellectual property rights
-of the MiniDebet project while allowing for community contribution and learning.
+For licensing inquiries, contact: jamshaid@ledokoz.com

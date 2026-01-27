@@ -58,6 +58,13 @@ minidebet/
 
 ## License
 
-This project is licensed under the Source Available License - see the [LICENSE](LICENSE) file for details.
+This project is proprietary software. Source code access requires a valid license.
 
-The source code is available for viewing and learning purposes, but commercial distribution is restricted.
+**Licensing Options:**
+- Personal/Development License: €49/year
+- Commercial License: €299/year
+- Enterprise License: Custom pricing
+
+Contact **jamshaid@ledokoz.com** for licensing information and source code access.
+
+Unauthorized use, distribution, or modification is strictly prohibited.
