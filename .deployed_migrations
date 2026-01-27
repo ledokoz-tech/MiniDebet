@@ -1,0 +1,7 @@
+[
+  "0001_create_users",
+  "0002_create_clients",
+  "0003_create_invoices",
+  "0004_create_invoice_items",
+  "0005_create_user_settings"
+]

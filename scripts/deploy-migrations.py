@@ -66,13 +66,22 @@ class MigrationDeployer:
             with open(migration['file'], 'r') as f:
                 sql_content = f.read()
             
-            # Deploy using wrangler
+            # Deploy using wrangler - write to temp file to avoid argument issues
+            import tempfile
+            with tempfile.NamedTemporaryFile(mode='w', suffix='.sql', delete=False) as f:
+                f.write(sql_content)
+                temp_file = f.name
+            
             cmd = [
                 "npx", "wrangler", "d1", "execute", self.database_name,
-                "--command", sql_content
+                "--file", temp_file
             ]
             
             result = subprocess.run(cmd, capture_output=True, text=True)
+            
+            # Clean up temp file
+            import os
+            os.unlink(temp_file)
             
             if result.returncode == 0:
                 print(f"✅ Successfully deployed: {migration['name']}")
@@ -93,7 +102,7 @@ class MigrationDeployer:
         try:
             # List existing databases
             result = subprocess.run([
-                "npx", "wrangler", "d1", "list"
+                "npx", "wrangler", "d1", "list", "--json"
             ], capture_output=True, text=True)
             
             if result.returncode == 0:

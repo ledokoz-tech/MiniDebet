@@ -47,3 +47,9 @@ package-lock.json
 
 # cargo.lock
 cargo.lock
+
+# wrangler
+.wrangler/
+
+# qoder
+.qoder/
