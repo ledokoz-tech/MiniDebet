@@ -49,7 +49,7 @@ pub async fn create_user(
     // Save to database (placeholder)
     let user = User::new(
         new_user.email,
-        new_user.password_hash,
+        "hashed_password_placeholder".to_string(), // In real implementation, use the hashed password
         new_user.first_name,
         new_user.last_name,
         new_user.company_name,

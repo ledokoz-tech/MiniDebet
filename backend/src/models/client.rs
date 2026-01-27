@@ -52,7 +52,7 @@ impl NewClient {
             street,
             city,
             postal_code,
-            country: country.unwrap_or_else(|| "DE".to_string()),
+            country: country.or(Some("DE".to_string())),
             vat_number,
         }
     }

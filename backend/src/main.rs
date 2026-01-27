@@ -5,7 +5,6 @@ use axum::{
 use std::net::SocketAddr;
 use tower_http::cors::CorsLayer;
 use tracing_subscriber;
-use std::sync::Arc;
 
 mod db;
 mod models;
@@ -38,13 +37,10 @@ async fn main() {
         .layer(CorsLayer::permissive());
 
     // Run our application
-    let addr = SocketAddr::from(([127, 0, 0, 1], 8080));
+    let listener = tokio::net::TcpListener::bind(addr).await.unwrap();
     println!("listening on {}", addr);
     
-    axum::Server::bind(&addr)
-        .serve(app.into_make_service())
-        .await
-        .unwrap();
+    axum::serve(listener, app).await.unwrap();
 }
 
 async fn root() -> &'static str {

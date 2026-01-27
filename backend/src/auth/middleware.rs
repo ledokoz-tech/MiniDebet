@@ -1,12 +1,12 @@
 use axum::{
     extract::Request,
-    http::{HeaderValue, StatusCode},
+    http::StatusCode,
     middleware::Next,
     response::Response,
 };
 use tracing::info;
 
-use super::jwt::{validate_token, Claims};
+use super::jwt::validate_token;
 
 pub async fn auth_middleware(
     request: Request,
