@@ -1,35 +1,38 @@
-import './App.css'
+import React, { useState } from 'react';
+import { AuthProvider, useAuth } from './contexts/AuthContext';
+import LoginForm from './components/LoginForm';
+import RegisterForm from './components/RegisterForm';
+import Dashboard from './pages/Dashboard';
+
+function AppContent() {
+  const { isAuthenticated, isLoading } = useAuth();
+  const [showRegister, setShowRegister] = useState(false);
+
+  if (isLoading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gray-50">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-600"></div>
+      </div>
+    );
+  }
+
+  if (!isAuthenticated) {
+    return showRegister ? (
+      <RegisterForm onLoginClick={() => setShowRegister(false)} />
+    ) : (
+      <LoginForm onRegisterClick={() => setShowRegister(true)} />
+    );
+  }
+
+  return <Dashboard />;
+}
 
 function App() {
   return (
-    <div className="min-h-screen bg-gray-50">
-      <header className="bg-white shadow">
-        <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-          <h1 className="text-3xl font-bold text-gray-900">MiniDebet</h1>
-          <p className="mt-2 text-lg text-gray-600">
-            High-performance invoicing for German freelancers
-          </p>
-        </div>
-      </header>
-      
-      <main>
-        <div className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
-          <div className="px-4 py-6 sm:px-0">
-            <div className="border-4 border-dashed border-gray-200 rounded-lg h-96 flex items-center justify-center">
-              <div className="text-center">
-                <h2 className="text-xl font-semibold text-gray-700 mb-2">
-                  Welcome to MiniDebet
-                </h2>
-                <p className="text-gray-500">
-                  Your German invoicing solution is loading...
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </main>
-    </div>
-  )
+    <AuthProvider>
+      <AppContent />
+    </AuthProvider>
+  );
 }
 
-export default App
+export default App;
