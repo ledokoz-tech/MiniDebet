@@ -108,6 +108,7 @@ CREATE TABLE users (
 ```
 
 **Columns:**
+
 - `id`: UUID v4 identifier
 - `email`: Unique email address (indexed)
 - `password_hash`: bcrypt hashed password
@@ -119,6 +120,7 @@ CREATE TABLE users (
 - `updated_at`: Last modification timestamp
 
 **Indexes:**
+
 - Primary key on `id`
 - Unique constraint on `email`
 
@@ -145,6 +147,7 @@ CREATE TABLE clients (
 ```
 
 **Columns:**
+
 - `id`: UUID v4 identifier
 - `user_id`: Reference to owning user
 - `name`: Client contact name
@@ -159,6 +162,7 @@ CREATE TABLE clients (
 - `updated_at`: Last modification timestamp
 
 **Indexes:**
+
 - Primary key on `id`
 - Foreign key on `user_id`
 - Index on `user_id` for fast lookups
@@ -193,6 +197,7 @@ CREATE TABLE invoices (
 ```
 
 **Columns:**
+
 - `id`: UUID v4 identifier
 - `user_id`: Reference to owning user
 - `client_id`: Reference to client
@@ -213,6 +218,7 @@ CREATE TABLE invoices (
 - `payment_method`: How payment was received
 
 **Indexes:**
+
 - Primary key on `id`
 - Unique constraint on `invoice_number`
 - Foreign keys on `user_id` and `client_id`
@@ -236,6 +242,7 @@ CREATE TABLE invoice_items (
 ```
 
 **Columns:**
+
 - `id`: UUID v4 identifier
 - `invoice_id`: Reference to parent invoice
 - `description`: Item description
@@ -245,6 +252,7 @@ CREATE TABLE invoice_items (
 - `created_at`: Record creation timestamp
 
 **Indexes:**
+
 - Primary key on `id`
 - Foreign key on `invoice_id`
 - Index on `invoice_id` for fast item retrieval
@@ -271,6 +279,7 @@ CREATE TABLE user_settings (
 ```
 
 **Columns:**
+
 - `id`: UUID v4 identifier
 - `user_id`: Reference to user (unique constraint)
 - `company_logo`: Path/URL to company logo
@@ -284,6 +293,7 @@ CREATE TABLE user_settings (
 - `updated_at`: Last modification timestamp
 
 **Indexes:**
+
 - Primary key on `id`
 - Unique constraint on `user_id`
 - Foreign key on `user_id`
@@ -413,11 +423,13 @@ CREATE INDEX idx_user_settings_user_id ON user_settings(user_id);
 ## Database Constraints
 
 ### Foreign Key Constraints
+
 - Cascade delete on user deletion (clients, invoices, settings)
 - Restrict delete on client with existing invoices
 - Automatic cleanup of orphaned records
 
 ### Check Constraints
+
 - Status values: draft, sent, paid, overdue, cancelled
 - Currency codes: EUR, USD, etc.
 - Tax rates: 0.00 to 100.00
@@ -426,6 +438,7 @@ CREATE INDEX idx_user_settings_user_id ON user_settings(user_id);
 ### Triggers
 
 **Update timestamps trigger:**
+
 ```sql
 CREATE TRIGGER update_users_updated_at 
     AFTER UPDATE ON users
@@ -440,18 +453,21 @@ Similar triggers exist for clients, invoices, and user_settings tables.
 ## Performance Considerations
 
 ### Indexing Strategy
+
 - Primary keys on all tables
 - Foreign key indexes for JOIN operations
 - Composite indexes for common query patterns
 - Unique constraints where appropriate
 
 ### Query Optimization
+
 - Denormalized calculated fields (total_price in invoice_items)
 - Pre-calculated totals in invoices table
 - Efficient pagination using LIMIT/OFFSET
 - Proper use of WHERE clauses
 
 ### Data Types
+
 - TEXT for UUIDs and variable-length strings
 - DECIMAL for monetary values (precision: 10,2)
 - INTEGER for counts and IDs
@@ -461,6 +477,7 @@ Similar triggers exist for clients, invoices, and user_settings tables.
 ## Backup and Recovery
 
 ### Backup Strategy
+
 ```bash
 # Daily backup
 sqlite3 minidebet.db ".backup 'backups/minidebet_$(date +%Y%m%d).db'"
@@ -470,6 +487,7 @@ sqlite3 minidebet.db ".restore backups/minidebet_20240115.db"
 ```
 
 ### Maintenance Commands
+
 ```sql
 -- Analyze query performance
 ANALYZE;
@@ -484,12 +502,14 @@ VACUUM;
 ## Security Considerations
 
 ### Data Protection
+
 - Passwords stored as bcrypt hashes
 - No sensitive data in logs
 - Regular security audits
 - Parameterized queries to prevent SQL injection
 
 ### Access Control
+
 - Row-level security through user_id foreign keys
 - Application-level permission checks
 - Audit trails for all modifications
@@ -497,6 +517,7 @@ VACUUM;
 ## Future Enhancements
 
 ### Planned Schema Changes
+
 1. **Audit Trail Table**: Track all data modifications
 2. **Payment Records Table**: Detailed payment history
 3. **Recurring Invoices Table**: Template for recurring billing
@@ -504,6 +525,7 @@ VACUUM;
 5. **Tax Zones Table**: Support for different tax jurisdictions
 
 ### Scalability Improvements
+
 - Partitioning large tables
 - Read replicas for reporting
 - Connection pooling optimization

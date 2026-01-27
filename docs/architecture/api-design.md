@@ -1,22 +1,26 @@
 # API Design
 
 ## Base URL
-```
+
+```sh
 http://localhost:8080/api
 ```
 
 ## Authentication
+
 All API endpoints require JWT authentication except for user registration and login.
 
 ## Endpoints
 
 ### Users
+
 - `POST /api/users` - Register new user
 - `POST /api/auth/login` - Login user
 - `GET /api/users/me` - Get current user
 - `PUT /api/users/me` - Update user profile
 
 ### Clients
+
 - `POST /api/clients` - Create new client
 - `GET /api/clients` - List all clients
 - `GET /api/clients/:id` - Get client details
@@ -24,6 +28,7 @@ All API endpoints require JWT authentication except for user registration and lo
 - `DELETE /api/clients/:id` - Delete client
 
 ### Invoices
+
 - `POST /api/invoices` - Create new invoice
 - `GET /api/invoices` - List all invoices
 - `GET /api/invoices/:id` - Get invoice details
@@ -33,12 +38,14 @@ All API endpoints require JWT authentication except for user registration and lo
 - `POST /api/invoices/:id/pay` - Mark invoice as paid
 
 ### Settings
+
 - `GET /api/settings` - Get user settings
 - `PUT /api/settings` - Update user settings
 
 ## Request/Response Examples
 
 ### Create User
+
 ```json
 POST /api/users
 {
@@ -52,6 +59,7 @@ POST /api/users
 ```
 
 ### Create Client
+
 ```json
 POST /api/clients
 {
@@ -67,6 +75,7 @@ POST /api/clients
 ```
 
 ### Create Invoice
+
 ```json
 POST /api/invoices
 {

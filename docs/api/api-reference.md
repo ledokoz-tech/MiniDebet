@@ -9,13 +9,14 @@
 
 All protected endpoints require a valid JWT token in the Authorization header:
 
-```
+```sh
 Authorization: Bearer <your-jwt-token>
 ```
 
 ### Error Responses
 
-**401 Unauthorized**
+401 Unauthorized
+
 ```json
 {
   "error": "Unauthorized",
@@ -23,7 +24,8 @@ Authorization: Bearer <your-jwt-token>
 }
 ```
 
-**403 Forbidden**
+403 Forbidden
+
 ```json
 {
   "error": "Forbidden",
@@ -40,6 +42,7 @@ Authorization: Bearer <your-jwt-token>
 Creates a new user account.
 
 **Request Body:**
+
 ```json
 {
   "email": "user@example.com",
@@ -52,6 +55,7 @@ Creates a new user account.
 ```
 
 **Success Response (201 Created):**
+
 ```json
 {
   "id": "user-uuid",
@@ -63,6 +67,7 @@ Creates a new user account.
 ```
 
 **Error Responses:**
+
 - 400 Bad Request: Invalid input data
 - 409 Conflict: Email already exists
 
@@ -73,6 +78,7 @@ Creates a new user account.
 Authenticate user and receive JWT token.
 
 **Request Body:**
+
 ```json
 {
   "email": "user@example.com",
@@ -81,6 +87,7 @@ Authenticate user and receive JWT token.
 ```
 
 **Success Response (200 OK):**
+
 ```json
 {
   "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
@@ -95,6 +102,7 @@ Authenticate user and receive JWT token.
 ```
 
 **Error Responses:**
+
 - 400 Bad Request: Missing credentials
 - 401 Unauthorized: Invalid credentials
 
@@ -105,11 +113,13 @@ Authenticate user and receive JWT token.
 Retrieve authenticated user's profile information.
 
 **Headers:**
-```
+
+```sh
 Authorization: Bearer <jwt-token>
 ```
 
 **Success Response (200 OK):**
+
 ```json
 {
   "id": "user-uuid",
@@ -129,11 +139,13 @@ Authorization: Bearer <jwt-token>
 Update authenticated user's profile information.
 
 **Headers:**
-```
+
+```sh
 Authorization: Bearer <jwt-token>
 ```
 
 **Request Body:**
+
 ```json
 {
   "first_name": "Maximilian",
@@ -144,6 +156,7 @@ Authorization: Bearer <jwt-token>
 ```
 
 **Success Response (200 OK):**
+
 ```json
 {
   "id": "user-uuid",
@@ -164,11 +177,13 @@ Authorization: Bearer <jwt-token>
 Create a new client for the authenticated user.
 
 **Headers:**
-```
+
+```sh
 Authorization: Bearer <jwt-token>
 ```
 
 **Request Body:**
+
 ```json
 {
   "name": "Acme Corporation",
@@ -183,6 +198,7 @@ Authorization: Bearer <jwt-token>
 ```
 
 **Success Response (201 Created):**
+
 ```json
 {
   "id": "client-uuid",
@@ -206,15 +222,18 @@ Authorization: Bearer <jwt-token>
 Retrieve all clients for the authenticated user.
 
 **Headers:**
-```
+
+```sh
 Authorization: Bearer <jwt-token>
 ```
 
 **Query Parameters:**
+
 - `page` (optional): Page number (default: 1)
 - `limit` (optional): Items per page (default: 20, max: 100)
 
 **Success Response (200 OK):**
+
 ```json
 {
   "clients": [
@@ -242,11 +261,13 @@ Authorization: Bearer <jwt-token>
 Retrieve specific client information.
 
 **Headers:**
-```
+
+```sh
 Authorization: Bearer <jwt-token>
 ```
 
 **Success Response (200 OK):**
+
 ```json
 {
   "id": "client-uuid",
@@ -271,11 +292,13 @@ Authorization: Bearer <jwt-token>
 Update client information.
 
 **Headers:**
-```
+
+```sh
 Authorization: Bearer <jwt-token>
 ```
 
 **Request Body:**
+
 ```json
 {
   "name": "Acme Corporation GmbH",
@@ -296,11 +319,12 @@ Authorization: Bearer <jwt-token>
 Delete a client and all associated invoices.
 
 **Headers:**
-```
+
+```sh
 Authorization: Bearer <jwt-token>
 ```
 
-**Success Response (204 No Content)**
+Success Response (204 No Content)
 
 ## Invoice Management
 
@@ -311,11 +335,13 @@ Authorization: Bearer <jwt-token>
 Create a new invoice for a client.
 
 **Headers:**
-```
+
+```sh
 Authorization: Bearer <jwt-token>
 ```
 
 **Request Body:**
+
 ```json
 {
   "client_id": "client-uuid",
@@ -339,6 +365,7 @@ Authorization: Bearer <jwt-token>
 ```
 
 **Success Response (201 Created):**
+
 ```json
 {
   "id": "invoice-uuid",
@@ -380,17 +407,20 @@ Authorization: Bearer <jwt-token>
 Retrieve all invoices for the authenticated user.
 
 **Headers:**
-```
+
+```sh
 Authorization: Bearer <jwt-token>
 ```
 
 **Query Parameters:**
+
 - `status` (optional): Filter by status (draft, sent, paid, overdue)
 - `client_id` (optional): Filter by client
 - `page` (optional): Page number (default: 1)
 - `limit` (optional): Items per page (default: 20)
 
 **Success Response (200 OK):**
+
 ```json
 {
   "invoices": [
@@ -422,11 +452,13 @@ Authorization: Bearer <jwt-token>
 Retrieve detailed invoice information including line items.
 
 **Headers:**
-```
+
+```sh
 Authorization: Bearer <jwt-token>
 ```
 
 **Success Response (200 OK):**
+
 ```json
 {
   "id": "invoice-uuid",
@@ -467,11 +499,13 @@ Authorization: Bearer <jwt-token>
 Update invoice details and line items.
 
 **Headers:**
-```
+
+```sh
 Authorization: Bearer <jwt-token>
 ```
 
 **Request Body:**
+
 ```json
 {
   "due_date": "2024-02-28",
@@ -494,11 +528,12 @@ Authorization: Bearer <jwt-token>
 Delete an invoice (only draft invoices can be deleted).
 
 **Headers:**
-```
+
+```sh
 Authorization: Bearer <jwt-token>
 ```
 
-**Success Response (204 No Content)**
+Success Response (204 No Content)
 
 ### Send Invoice
 
@@ -507,11 +542,13 @@ Authorization: Bearer <jwt-token>
 Mark invoice as sent and send to client.
 
 **Headers:**
-```
+
+```sh
 Authorization: Bearer <jwt-token>
 ```
 
 **Success Response (200 OK):**
+
 ```json
 {
   "id": "invoice-uuid",
@@ -527,11 +564,13 @@ Authorization: Bearer <jwt-token>
 Mark invoice as paid.
 
 **Headers:**
-```
+
+```sh
 Authorization: Bearer <jwt-token>
 ```
 
 **Request Body:**
+
 ```json
 {
   "payment_date": "2024-01-20",
@@ -540,6 +579,7 @@ Authorization: Bearer <jwt-token>
 ```
 
 **Success Response (200 OK):**
+
 ```json
 {
   "id": "invoice-uuid",
@@ -558,11 +598,13 @@ Authorization: Bearer <jwt-token>
 Retrieve user-specific settings.
 
 **Headers:**
-```
+
+```sh
 Authorization: Bearer <jwt-token>
 ```
 
 **Success Response (200 OK):**
+
 ```json
 {
   "id": "settings-uuid",
@@ -585,11 +627,13 @@ Authorization: Bearer <jwt-token>
 Update user settings.
 
 **Headers:**
-```
+
+```sh
 Authorization: Bearer <jwt-token>
 ```
 
 **Request Body:**
+
 ```json
 {
   "invoice_prefix": "FACT",
@@ -609,6 +653,7 @@ Authorization: Bearer <jwt-token>
 Check if the API is running.
 
 **Success Response (200 OK):**
+
 ```json
 {
   "status": "healthy",
@@ -623,6 +668,7 @@ Check if the API is running.
 Welcome message.
 
 **Success Response (200 OK):**
+
 ```json
 "Welcome to MiniDebet API!"
 ```
@@ -655,10 +701,12 @@ All error responses follow this format:
 ## Rate Limiting
 
 Current rate limits:
+
 - **Anonymous requests**: 100 requests per hour
 - **Authenticated requests**: 1000 requests per hour
 
 Exceeding limits returns:
+
 ```json
 {
   "error": "Rate Limit Exceeded",
@@ -677,6 +725,7 @@ Current version: v1
 ## Changelog
 
 ### v1.0.0 (Initial Release)
+
 - User registration and authentication
 - Client management (CRUD operations)
 - Invoice creation and management

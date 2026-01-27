@@ -55,12 +55,14 @@ make setup-all
 Or manually:
 
 **Frontend:**
+
 ```bash
 cd frontend
 npm install
 ```
 
 **Shared Package:**
+
 ```bash
 cd ../shared
 npm install
@@ -68,6 +70,7 @@ npm run build
 ```
 
 **Backend:**
+
 ```bash
 cd ../backend
 cargo build
@@ -78,6 +81,7 @@ cargo build
 ### Development Mode
 
 **Using Makefile:**
+
 ```bash
 make dev-all
 ```
@@ -85,30 +89,35 @@ make dev-all
 **Manually:**
 
 Terminal 1 (Backend):
+
 ```bash
 cd backend
 cargo run
 ```
 
 Terminal 2 (Frontend):
+
 ```bash
 cd frontend
 npm run dev
 ```
 
 The application will be available at:
-- Frontend: http://localhost:5173
-- Backend API: http://localhost:3000
+
+- Frontend: <http://localhost:5173>
+- Backend API: <http://localhost:3000>
 
 ### Production Build
 
 **Frontend:**
+
 ```bash
 cd frontend
 npm run build
 ```
 
 **Backend:**
+
 ```bash
 cd backend
 cargo build --release
@@ -135,6 +144,7 @@ sqlx migrate add migration_name
 ```
 
 This creates:
+
 - `migrations/{timestamp}_migration_name.sql` (up migration)
 - `migrations/{timestamp}_migration_name.down.sql` (down migration)
 
@@ -151,6 +161,7 @@ make reset-db
 ### Code Quality
 
 **Format code:**
+
 ```bash
 # Rust (backend)
 cd backend
@@ -162,6 +173,7 @@ npm run format
 ```
 
 **Linting:**
+
 ```bash
 # Rust
 cd backend
@@ -203,7 +215,8 @@ SELECT * FROM users;      # Query data
 
 ### Common Issues
 
-**1. Rust compilation errors**
+1. Rust compilation errors
+
 ```bash
 # Update Rust toolchain
 rustup update
@@ -212,7 +225,8 @@ rustup update
 cargo clean
 ```
 
-**2. Node.js version issues**
+1. Node.js version issues
+
 ```bash
 # Check version
 node --version
@@ -222,14 +236,17 @@ nvm install 18
 nvm use 18
 ```
 
-**3. Database connection issues**
+1. Database connection issues
+
 - Ensure SQLite is installed and in PATH
 - Check `DATABASE_URL` in `.env` file
 - Verify database file permissions
 
-**4. Port conflicts**
+1. Port conflicts
+
 - Change ports in `.env` file
 - Kill processes using the ports:
+
 ```bash
 # Linux/Mac
 lsof -i :3000
@@ -245,11 +262,13 @@ taskkill /PID <PID> /F
 **Enable verbose logging:**
 
 Backend `.env`:
+
 ```env
 RUST_LOG=debug
 ```
 
 Frontend console:
+
 ```javascript
 localStorage.debug = '*'
 ```
@@ -275,6 +294,7 @@ See [CONTRIBUTING.md](../CONTRIBUTING.md) for contribution guidelines.
 ## Next Steps
 
 After successful setup:
+
 1. Review the [API Documentation](../architecture/api-design.md)
 2. Explore the [Project Structure](../../PROJECT_STATUS.md)
 3. Check out the [Deployment Guide](./deployment.md)

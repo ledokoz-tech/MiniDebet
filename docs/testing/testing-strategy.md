@@ -6,7 +6,7 @@ MiniDebet employs a comprehensive testing strategy covering unit tests, integrat
 
 ## Test Organization
 
-```
+```structure
 minidebet/
 ├── backend/
 │   ├── tests/
@@ -35,6 +35,7 @@ minidebet/
 Located in the same files as the code they test, using Rust's built-in testing framework.
 
 **Example Model Test:**
+
 ```rust
 // src/models/user.rs
 #[cfg(test)]
@@ -75,6 +76,7 @@ mod tests {
 ```
 
 **Running Unit Tests:**
+
 ```bash
 cd backend
 cargo test
@@ -87,6 +89,7 @@ cargo test models::user
 Separate test files that test the interaction between components.
 
 **API Integration Test:**
+
 ```rust
 // tests/integration/api_tests.rs
 use axum::{
@@ -130,6 +133,7 @@ async fn test_user_registration() {
 ```
 
 **Database Integration Test:**
+
 ```rust
 // tests/integration/database_tests.rs
 use sqlx::SqlitePool;
@@ -157,6 +161,7 @@ async fn test_user_crud_operations(pool: SqlitePool) {
 ```
 
 **Running Integration Tests:**
+
 ```bash
 cd backend
 cargo test --test integration_test
@@ -164,11 +169,12 @@ cargo test --test integration_test
 
 ## Frontend Testing (TypeScript/Jest)
 
-### Unit Tests
+### **Unit Tests**
 
 Component and utility function testing using Jest and React Testing Library.
 
 **Component Test:**
+
 ```typescript
 // frontend/__tests__/components/LoginForm.test.tsx
 import { render, screen, fireEvent } from '@testing-library/react';
@@ -218,6 +224,7 @@ describe('LoginForm', () => {
 ```
 
 **Hook Test:**
+
 ```typescript
 // frontend/__tests__/hooks/useAuth.test.ts
 import { renderHook, act } from '@testing-library/react';
@@ -248,11 +255,12 @@ describe('useAuth', () => {
 });
 ```
 
-### Integration Tests
+### **Integration Tests**
 
 Testing component interactions and API integrations.
 
 **API Service Test:**
+
 ```typescript
 // frontend/__tests__/services/api.test.ts
 import { api } from '../../src/services/api';
@@ -296,6 +304,7 @@ describe('Auth Services', () => {
 ```
 
 **Running Frontend Tests:**
+
 ```bash
 cd frontend
 npm run test
@@ -452,6 +461,7 @@ jobs:
 ## Test Coverage
 
 ### Coverage Goals
+
 - **Unit Tests**: 80%+ coverage
 - **Integration Tests**: 70%+ coverage
 - **Critical Paths**: 100% coverage
@@ -459,6 +469,7 @@ jobs:
 ### Coverage Reports
 
 **Backend Coverage:**
+
 ```bash
 cd backend
 cargo tarpaulin --out Html
@@ -466,6 +477,7 @@ cargo tarpaulin --out Html
 ```
 
 **Frontend Coverage:**
+
 ```bash
 cd frontend
 npm run test -- --coverage --watchAll=false
@@ -475,6 +487,7 @@ npm run test -- --coverage --watchAll=false
 ## Test Best Practices
 
 ### Backend
+
 1. Use descriptive test names
 2. Test edge cases and error conditions
 3. Mock external dependencies
@@ -482,6 +495,7 @@ npm run test -- --coverage --watchAll=false
 5. Follow AAA pattern (Arrange, Act, Assert)
 
 ### Frontend
+
 1. Test user interactions, not implementation details
 2. Use React Testing Library queries
 3. Mock API calls and context providers
@@ -489,6 +503,7 @@ npm run test -- --coverage --watchAll=false
 5. Snapshot testing for UI components
 
 ### General
+
 1. Keep tests independent and isolated
 2. Use factories for test data creation
 3. Run tests frequently during development
@@ -498,6 +513,7 @@ npm run test -- --coverage --watchAll=false
 ## Debugging Tests
 
 ### Backend Debugging
+
 ```bash
 # Run specific test with output
 cargo test test_name -- --nocapture
@@ -510,6 +526,7 @@ cargo test -- --test-threads=1
 ```
 
 ### Frontend Debugging
+
 ```bash
 # Run tests in watch mode
 npm run test -- --watch
@@ -524,6 +541,7 @@ npm run test -- --verbose
 ## Performance Testing
 
 ### Load Testing Setup
+
 ```typescript
 // tests/performance/load-test.js
 import { check, sleep } from 'k6';
@@ -552,6 +570,7 @@ Run with: `k6 run load-test.js`
 ## Security Testing
 
 ### Automated Security Scans
+
 - Dependency vulnerability scanning
 - Static code analysis
 - Penetration testing scripts

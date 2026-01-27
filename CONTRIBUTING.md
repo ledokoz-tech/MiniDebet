@@ -5,6 +5,7 @@ Thank you for your interest in contributing to MiniDebet! This document provides
 ## Code of Conduct
 
 By participating in this project, you agree to abide by our Code of Conduct:
+
 - Be respectful and inclusive
 - Focus on constructive feedback
 - Welcome newcomers and different perspectives
@@ -15,12 +16,14 @@ By participating in this project, you agree to abide by our Code of Conduct:
 ### Reporting Issues
 
 **Before submitting an issue:**
+
 1. Check existing issues to avoid duplicates
 2. Ensure you're using the latest version
 3. Include steps to reproduce the issue
 4. Provide relevant environment information
 
 **Good bug reports include:**
+
 - Clear title and description
 - Steps to reproduce
 - Expected vs actual behavior
@@ -30,6 +33,7 @@ By participating in this project, you agree to abide by our Code of Conduct:
 ### Feature Requests
 
 Submit feature requests as GitHub issues with:
+
 - Clear problem statement
 - Proposed solution description
 - Benefits and use cases
@@ -38,6 +42,7 @@ Submit feature requests as GitHub issues with:
 ### Pull Requests
 
 #### Getting Started
+
 1. Fork the repository
 2. Create a feature branch (`git checkout -b feature/amazing-feature`)
 3. Make your changes
@@ -46,6 +51,7 @@ Submit feature requests as GitHub issues with:
 6. Submit pull request
 
 #### PR Requirements
+
 - **Code Quality**: Follow existing code style and conventions
 - **Tests**: Include tests for new functionality
 - **Documentation**: Update relevant documentation
@@ -53,8 +59,10 @@ Submit feature requests as GitHub issues with:
 - **Branch Naming**: Use descriptive branch names
 
 #### Commit Message Guidelines
+
 Follow conventional commits format:
-```
+
+```sh
 type(scope): brief description
 
 Detailed explanation of changes (optional)
@@ -65,6 +73,7 @@ Fixes #123
 Types: `feat`, `fix`, `docs`, `style`, `refactor`, `test`, `chore`
 
 Examples:
+
 - `feat(auth): add password reset functionality`
 - `fix(api): resolve invoice calculation rounding error`
 - `docs(readme): update installation instructions`
@@ -72,6 +81,7 @@ Examples:
 ## Development Standards
 
 ### Backend (Rust)
+
 - Follow Rust naming conventions
 - Use `clippy` for linting (`cargo clippy`)
 - Format code with `rustfmt` (`cargo fmt`)
@@ -79,6 +89,7 @@ Examples:
 - Document public APIs with rustdoc
 
 ### Frontend (TypeScript/React)
+
 - Use TypeScript for type safety
 - Follow React best practices
 - Write component tests with React Testing Library
@@ -86,12 +97,14 @@ Examples:
 - Maintain consistent component structure
 
 ### Database
+
 - Write clear, reversible migrations
 - Follow naming conventions for tables/columns
 - Add appropriate indexes for performance
 - Document schema changes
 
 ### Documentation
+
 - Keep documentation up-to-date with code changes
 - Use clear, concise language
 - Include examples where helpful
@@ -100,12 +113,14 @@ Examples:
 ## Testing Requirements
 
 ### Before Submitting PR
+
 - Run all tests locally
 - Ensure test coverage meets minimum requirements
 - Test functionality manually
 - Verify no breaking changes
 
 ### Test Categories
+
 1. **Unit Tests**: Individual function/component testing
 2. **Integration Tests**: Component interaction testing
 3. **End-to-End Tests**: Full workflow testing
@@ -113,6 +128,7 @@ Examples:
 ## Review Process
 
 ### PR Review Checklist
+
 - [ ] Code follows project standards
 - [ ] Tests pass and cover new functionality
 - [ ] Documentation is updated
@@ -121,6 +137,7 @@ Examples:
 - [ ] Security considerations addressed
 
 ### Review Timeline
+
 - Initial review: Within 2 business days
 - Follow-up reviews: As needed based on feedback
 - Merge: After approval and passing CI
@@ -128,12 +145,14 @@ Examples:
 ## Getting Help
 
 ### Questions
+
 - Check existing documentation first
 - Search issues and discussions
 - Join community channels if available
 - Contact maintainers for complex questions
 
 ### Development Help
+
 - Review development setup guide
 - Check existing code for patterns
 - Ask specific technical questions in issues
@@ -142,6 +161,7 @@ Examples:
 ## Recognition
 
 Contributors will be acknowledged in:
+
 - Project README
 - Release notes
 - Contributor documentation
@@ -153,7 +173,7 @@ By contributing to MiniDebet, you agree that your contributions will be licensed
 
 ## Contact
 
-- **Email**: jamshaid@ledokoz.com
+- **Email**: <jamshaid@ledokoz.com>
 - **Issues**: GitHub issues tracker
 - **Feature Requests**: Through proper channels
 

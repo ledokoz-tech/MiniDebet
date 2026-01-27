@@ -4,7 +4,7 @@
 
 MiniDebet follows a modern microservices-inspired architecture with clear separation of concerns:
 
-```
+```diagram
 ┌─────────────────┐    HTTP/REST API    ┌─────────────────┐
 │   Frontend      │ ←─────────────────→ │    Backend      │
 │  (React/Vite)   │                     │   (Axum/Rust)   │
@@ -21,6 +21,7 @@ MiniDebet follows a modern microservices-inspired architecture with clear separa
 ## Technology Stack
 
 ### Frontend
+
 - **Framework**: React 18+ with TypeScript
 - **Build Tool**: Vite
 - **Styling**: Tailwind CSS
@@ -28,6 +29,7 @@ MiniDebet follows a modern microservices-inspired architecture with clear separa
 - **HTTP Client**: Axios/Fetch API
 
 ### Backend
+
 - **Framework**: Axum (Rust web framework)
 - **Database**: SQLite with SQLx ORM
 - **Authentication**: JWT (JSON Web Tokens)
@@ -36,6 +38,7 @@ MiniDebet follows a modern microservices-inspired architecture with clear separa
 - **Async Runtime**: Tokio
 
 ### Shared
+
 - **Types**: TypeScript interfaces shared between frontend and backend
 - **Validation**: Zod schemas (planned)
 
@@ -43,7 +46,7 @@ MiniDebet follows a modern microservices-inspired architecture with clear separa
 
 ### Backend Modules
 
-```
+```sh
 backend/src/
 ├── main.rs          # Application entry point
 ├── models/          # Database models and structs
@@ -65,7 +68,7 @@ backend/src/
 
 ### Frontend Structure
 
-```
+```sh
 frontend/src/
 ├── components/      # Reusable UI components
 │   ├── LoginForm.tsx
@@ -133,6 +136,7 @@ sequenceDiagram
 ### Core Tables
 
 #### Users Table
+
 ```sql
 CREATE TABLE users (
     id TEXT PRIMARY KEY,
@@ -148,6 +152,7 @@ CREATE TABLE users (
 ```
 
 #### Clients Table
+
 ```sql
 CREATE TABLE clients (
     id TEXT PRIMARY KEY,
@@ -167,6 +172,7 @@ CREATE TABLE clients (
 ```
 
 #### Invoices Table
+
 ```sql
 CREATE TABLE invoices (
     id TEXT PRIMARY KEY,
@@ -190,6 +196,7 @@ CREATE TABLE invoices (
 ```
 
 #### Invoice Items Table
+
 ```sql
 CREATE TABLE invoice_items (
     id TEXT PRIMARY KEY,
@@ -206,18 +213,21 @@ CREATE TABLE invoice_items (
 ## Security Considerations
 
 ### Authentication & Authorization
+
 - JWT tokens with 24-hour expiration
 - Password hashing with bcrypt (cost factor 12)
 - Protected routes via middleware
 - Role-based access control (planned)
 
 ### Data Protection
+
 - HTTPS in production
 - Input validation and sanitization
 - SQL injection prevention via prepared statements
 - CORS configuration for frontend security
 
 ### Best Practices Implemented
+
 - Environment variables for secrets
 - Secure password storage
 - Rate limiting (planned)
@@ -226,11 +236,13 @@ CREATE TABLE invoice_items (
 ## Scalability Considerations
 
 ### Current Architecture
+
 - Single database instance (SQLite)
 - Monolithic backend application
 - Static frontend deployment
 
 ### Future Scaling Options
+
 1. **Database**: Migrate to PostgreSQL for better concurrency
 2. **Caching**: Add Redis for session storage and caching
 3. **Load Balancing**: Deploy multiple backend instances
@@ -240,7 +252,8 @@ CREATE TABLE invoice_items (
 ## Deployment Architecture
 
 ### Production Setup
-```
+
+```diagram
 Internet → Load Balancer → Reverse Proxy (Nginx) → Application Servers
                                     ↓
                               Static Files (Frontend)
@@ -249,6 +262,7 @@ Internet → Load Balancer → Reverse Proxy (Nginx) → Application Servers
 ```
 
 ### Cloud Deployment Options
+
 - **Frontend**: Vercel, Netlify, or Cloudflare Pages
 - **Backend**: AWS EC2, DigitalOcean, or Railway
 - **Database**: Managed PostgreSQL service
@@ -257,12 +271,14 @@ Internet → Load Balancer → Reverse Proxy (Nginx) → Application Servers
 ## Performance Optimizations
 
 ### Implemented
+
 - Async/await for non-blocking operations
 - Connection pooling for database queries
 - Efficient serialization with Serde
 - Compiled Rust backend for maximum performance
 
 ### Planned
+
 - Database indexing for frequent queries
 - Pagination for large datasets
 - Caching strategies
@@ -270,12 +286,14 @@ Internet → Load Balancer → Reverse Proxy (Nginx) → Application Servers
 
 ## Error Handling Strategy
 
-### Backend
+### **Backend**
+
 - Structured error responses with status codes
 - Logging with tracing crate
 - Graceful degradation for non-critical failures
 
-### Frontend
+### **Frontend**
+
 - User-friendly error messages
 - Automatic retry mechanisms
 - Fallback UI states
@@ -283,10 +301,12 @@ Internet → Load Balancer → Reverse Proxy (Nginx) → Application Servers
 ## Monitoring & Observability
 
 ### Current
+
 - Basic logging with tracing
 - Health check endpoint (`/health`)
 
-### Planned
+### **Planned**
+
 - Application performance monitoring
 - Database query performance tracking
 - User analytics
