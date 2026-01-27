@@ -1,48 +1,61 @@
-# Mini Debet
+# MiniDebet
 
 **The boring, high-performance invoicing SaaS for German freelancers.**
 
-## Mission
+## Quick Start
 
-MiniDebet is a utility-first financial tool. We are not trying to reinvent accounting. We are building a specialized, high-performance engine that solves exactly three problems for German freelancers:
+### Prerequisites
+- Node.js 18+
+- Rust 1.70+
+- SQLite3
 
-* Legally compliant invoices for Germany.
-* Anxiety-free tax estimation ( VAT vs TAX).
-* Clean data exports for the Steuerberater.
+### Development Setup
 
-## Tech Stack
+1. **Install frontend dependencies:**
+```bash
+cd frontend
+npm install
+```
 
-### Frontend
+2. **Install shared package dependencies:**
+```bash
+cd ../shared
+npm install
+npm run build
+```
 
-* React ( TypeScript )
-* Tailwind CSS ( Web )
-* Iced ( Desktop App )
+3. **Start the backend:**
+```bash
+cd ../backend
+cargo run
+```
 
-### Backend
+4. **Start the frontend:**
+```bash
+cd ../frontend
+npm run dev
+```
 
-* Axum ( Worker WASM )
-* SQLite ( Cloudflare )
-* Worker ( Cloudflare )
+## Project Structure
 
-## Target Audience
+```
+minidebet/
+├── frontend/          # React + TypeScript frontend
+├── backend/           # Axum + Rust backend
+├── shared/            # Shared TypeScript types
+├── docs/              # Documentation
+└── README.md
+```
 
-This Tools is for:
+## Features
 
-* Selbstständige (Sole proprietors) in Germany
-* Freelancers in Tech, Design, Consulting
-* Users tracking money in Excel or paper
-* Needs: Invoicing + basic expense tracking
+- ✅ Legally compliant German invoices
+- ✅ VAT/tax calculations
+- ✅ PDF generation
+- ✅ Data exports for tax advisors
+- ✅ Free/Pro tier pricing
+- ✅ Stripe payment integration
 
-This tool is not for:
+## License
 
-* GmbH and AGs
-* Merchants
-* Companies needing payroll
-
-## Pricing
-
-Simple flat pricing:
-
-* Free Tier: 3 invoices per month
-* Pro (€15/mo): Unlimited invoices + PDF branding + Exports
-* Accepted: Credit Card & SEPA via Stripe API
+MIT
