@@ -58,4 +58,6 @@ minidebet/
 
 ## License
 
-MIT
+This project is licensed under the Source Available License - see the [LICENSE](LICENSE) file for details.
+
+The source code is available for viewing and learning purposes, but commercial distribution is restricted.
