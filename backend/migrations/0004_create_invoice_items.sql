@@ -11,4 +11,4 @@ CREATE TABLE IF NOT EXISTS invoice_items (
 );
 
 -- Create index
-CREATE INDEX idx_invoice_items_invoice_id ON invoice_items(invoice_id);
+CREATE INDEX IF NOT EXISTS idx_invoice_items_invoice_id ON invoice_items(invoice_id);

@@ -16,5 +16,5 @@ CREATE TABLE IF NOT EXISTS clients (
 );
 
 -- Create indexes
-CREATE INDEX idx_clients_user_id ON clients(user_id);
-CREATE INDEX idx_clients_name ON clients(name);
+CREATE INDEX IF NOT EXISTS idx_clients_user_id ON clients(user_id);
+CREATE INDEX IF NOT EXISTS idx_clients_name ON clients(name);
