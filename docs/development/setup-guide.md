@@ -42,6 +42,9 @@ SERVER_PORT=3000
 
 # Frontend URL (for CORS)
 FRONTEND_URL=http://localhost:5173
+
+# Cloudflare Workers Backend URL
+CLOUDFLARE_WORKERS_URL=https://minidebet.jamshaidnasar.workers.dev
 ```
 
 ### 3. Install Dependencies

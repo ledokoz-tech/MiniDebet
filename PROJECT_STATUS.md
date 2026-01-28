@@ -172,5 +172,7 @@ make reset-db          # Reset database
 - ✅ Modular architecture for easy extension
 - ✅ Development tooling with Makefile
 - ✅ Comprehensive documentation
+- ✅ Cloudflare Workers deployment with automatic frontend configuration
+- ✅ Environment-based API endpoint configuration
 
 The project is ready for continued development! The core infrastructure is solid and provides a strong foundation for building the complete MiniDebet invoicing platform.

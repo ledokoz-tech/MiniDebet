@@ -1,6 +1,9 @@
 import { User, Client, Invoice, CreateUserRequest, CreateClientRequest, CreateInvoiceRequest } from '../../../shared/src';
 
-const API_BASE_URL = '/api';
+// Use environment variable for production, proxy for development
+const API_BASE_URL = import.meta.env.PROD 
+  ? (import.meta.env.VITE_API_BASE_URL || 'https://minidebet.jamshaidnasar.workers.dev/api')
+  : '/api';
 
 class ApiService {
   private getToken(): string | null {

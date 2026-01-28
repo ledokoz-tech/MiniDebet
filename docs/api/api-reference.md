@@ -2,8 +2,8 @@
 
 ## Base URL
 
-**Development**: `http://localhost:3000/api`
-**Production**: `https://api.minidebet.de/api`
+**Development**: `http://localhost:3000/api` (proxied to Cloudflare Workers)
+**Production**: `https://minidebet.jamshaidnasar.workers.dev/api`
 
 ## Authentication
 
