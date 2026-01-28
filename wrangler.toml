@@ -14,7 +14,6 @@ WORKERS_RS_VERSION = "0.7.0"
 
 [build]
 command = "cd backend/worker && worker-build --release"
-migrations_dir = "backend/migrations"
 
 [env.staging]
 workers_dev = true
