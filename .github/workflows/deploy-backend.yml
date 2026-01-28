@@ -27,6 +27,8 @@ jobs:
       - name: Deploy Worker & D1 Migrations
         run: |
           echo "🔍 Applying D1 database migrations..."
+          # Copy migrations to root directory for wrangler
+          cp -r backend/migrations ./migrations
           wrangler d1 migrations apply DB --remote
           echo "🚀 Deploying Cloudflare Worker..."
           wrangler deploy

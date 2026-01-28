@@ -7,12 +7,14 @@ compatibility_date = "2024-01-27"
 binding = "DB"
 database_name = "minidebet-dev"
 database_id = "24ad9ab4-b9bf-46f8-a174-7189871d0d58"
+migrations_dir = "backend/migrations"
 
 [vars]
 WORKERS_RS_VERSION = "0.7.0"
 
 [build]
 command = "cd backend/worker && worker-build --release"
+migrations_dir = "backend/migrations"
 
 [env.staging]
 workers_dev = true
@@ -22,6 +24,7 @@ workers_dev = true
 binding = "DB"
 database_name = "minidebet-staging"
 database_id = "fe2eeddb-98b4-456a-8003-dea391f7debe"
+migrations_dir = "backend/migrations"
 
 [env.production]
 workers_dev = false
@@ -32,3 +35,4 @@ route = { pattern = "api.minidebet.de/*", zone_name = "minidebet.de"}
 binding = "DB"
 database_name = "minidebet"
 database_id = "7d8f10b8-2d5f-4f3f-8e99-8acc2f44c1e3"
+migrations_dir = "backend/migrations"
