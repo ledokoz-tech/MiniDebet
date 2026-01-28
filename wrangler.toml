@@ -11,10 +11,6 @@ database_id = "24ad9ab4-b9bf-46f8-a174-7189871d0d58"
 [vars]
 WORKERS_RS_VERSION = "0.7.0"
 
-[[migrations]]
-tag = "v1"
-new_classes = ["MinidebetWorker"]
-
 [build]
 command = "cd backend/worker && worker-build --release"
 
