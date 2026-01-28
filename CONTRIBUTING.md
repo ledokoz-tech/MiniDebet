@@ -1,180 +1,317 @@
 # Contributing to MiniDebet
 
-Thank you for your interest in contributing to MiniDebet! This document provides guidelines and procedures for contributing to the project.
+Welcome! We're excited that you're interested in contributing to MiniDebet. This document will help you get started with our contribution process.
 
-## Code of Conduct
+## 🎯 Code of Conduct
 
-By participating in this project, you agree to abide by our Code of Conduct:
+By participating in this project, you agree to abide by our [Code of Conduct](CODE_OF_CONDUCT.md). Please read it before contributing.
 
-- Be respectful and inclusive
-- Focus on constructive feedback
-- Welcome newcomers and different perspectives
-- Maintain professionalism in all interactions
+## 🚀 Getting Started
 
-## How to Contribute
+### Prerequisites
 
-### Reporting Issues
+Before you begin, ensure you have:
 
-**Before submitting an issue:**
+- **Node.js** 18+ installed
+- **Rust** 1.70+ with `wasm32-unknown-unknown` target
+- **Git** for version control
+- **Cloudflare Account** (for full testing)
 
-1. Check existing issues to avoid duplicates
-2. Ensure you're using the latest version
-3. Include steps to reproduce the issue
-4. Provide relevant environment information
+### Setting Up Development Environment
 
-**Good bug reports include:**
-
-- Clear title and description
-- Steps to reproduce
-- Expected vs actual behavior
-- Screenshots/logs if applicable
-- Environment details (OS, versions, etc.)
-
-### Feature Requests
-
-Submit feature requests as GitHub issues with:
-
-- Clear problem statement
-- Proposed solution description
-- Benefits and use cases
-- Potential alternatives considered
-
-### Pull Requests
-
-#### Getting Started
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Make your changes
-4. Write/update tests
-5. Update documentation
-6. Submit pull request
-
-#### PR Requirements
-
-- **Code Quality**: Follow existing code style and conventions
-- **Tests**: Include tests for new functionality
-- **Documentation**: Update relevant documentation
-- **Commits**: Use clear, descriptive commit messages
-- **Branch Naming**: Use descriptive branch names
-
-#### Commit Message Guidelines
-
-Follow conventional commits format:
-
-```sh
-type(scope): brief description
-
-Detailed explanation of changes (optional)
-
-Fixes #123
+1. **Fork and Clone**
+```bash
+git clone https://github.com/yourusername/minidebet.git
+cd minidebet
 ```
 
-Types: `feat`, `fix`, `docs`, `style`, `refactor`, `test`, `chore`
+2. **Install Dependencies**
+```bash
+# Frontend
+cd frontend && npm install
 
-Examples:
+# Shared types
+cd ../shared && npm install && npm run build
 
-- `feat(auth): add password reset functionality`
-- `fix(api): resolve invoice calculation rounding error`
-- `docs(readme): update installation instructions`
+# Backend (ensure Rust is installed)
+cd ../backend && rustup target add wasm32-unknown-unknown
+```
 
-## Development Standards
+3. **Environment Setup**
+```bash
+# Copy environment files
+cp frontend/.env.example frontend/.env
+# Configure your Cloudflare credentials
+```
 
-### Backend (Rust)
+4. **Verify Setup**
+```bash
+npm run test  # Run tests to verify everything works
+```
 
+## 🛠️ Development Workflow
+
+### Branch Naming Convention
+
+Use descriptive branch names:
+- `feature/new-feature-name`
+- `bugfix/issue-description`
+- `hotfix/critical-fix`
+- `docs/documentation-update`
+
+### Making Changes
+
+1. **Create a branch**
+```bash
+git checkout -b feature/amazing-new-feature
+```
+
+2. **Make your changes**
+- Follow the existing code style
+- Write clear, concise commit messages
+- Add tests for new functionality
+- Update documentation as needed
+
+3. **Run tests**
+```bash
+# Frontend tests
+cd frontend && npm run test
+
+# Backend tests
+cd backend && cargo test
+
+# Integration tests
+npm run test:integration
+```
+
+### Code Style Guidelines
+
+#### Frontend (TypeScript/React)
+- Use TypeScript for all new code
+- Follow ESLint/Prettier configuration
+- Component structure: Props interface, component function, exports
+- Use functional components with hooks
+- Proper error boundaries and loading states
+
+#### Backend (Rust)
 - Follow Rust naming conventions
-- Use `clippy` for linting (`cargo clippy`)
-- Format code with `rustfmt` (`cargo fmt`)
-- Write unit tests for new functionality
-- Document public APIs with rustdoc
+- Use `clippy` for linting: `cargo clippy`
+- Write comprehensive documentation comments
+- Handle errors properly with `Result<T, E>`
+- Use async/await for I/O operations
 
-### Frontend (TypeScript/React)
+#### General Principles
+- **DRY**: Don't Repeat Yourself
+- **KISS**: Keep It Simple, Stupid
+- **YAGNI**: You Aren't Gonna Need It
+- **SOLID** principles where applicable
 
-- Use TypeScript for type safety
-- Follow React best practices
-- Write component tests with React Testing Library
-- Use ESLint and Prettier for code quality
-- Maintain consistent component structure
+### Testing Requirements
 
-### Database
+All contributions must include appropriate tests:
 
-- Write clear, reversible migrations
-- Follow naming conventions for tables/columns
-- Add appropriate indexes for performance
-- Document schema changes
+- **Unit Tests**: Test individual functions/components
+- **Integration Tests**: Test API endpoints and workflows
+- **UI Tests**: Test user interface interactions
+- **Performance Tests**: For performance-critical code
 
-### Documentation
+### Documentation Updates
 
-- Keep documentation up-to-date with code changes
-- Use clear, concise language
-- Include examples where helpful
-- Update README files when adding new features
+Update relevant documentation when:
+- Adding new features
+- Changing APIs
+- Modifying configuration
+- Updating dependencies
 
-## Testing Requirements
+Documentation locations:
+- `README.md` - Project overview
+- `docs/` directory - Detailed guides
+- Inline code comments - Technical details
+- `CONTRIBUTING.md` - This file
 
-### Before Submitting PR
+## 📤 Submitting Changes
 
-- Run all tests locally
-- Ensure test coverage meets minimum requirements
-- Test functionality manually
-- Verify no breaking changes
+### Pull Request Process
 
-### Test Categories
+1. **Ensure your branch is up to date**
+```bash
+git fetch origin
+git rebase origin/main
+```
 
-1. **Unit Tests**: Individual function/component testing
-2. **Integration Tests**: Component interaction testing
-3. **End-to-End Tests**: Full workflow testing
+2. **Run final checks**
+```bash
+npm run lint        # Code quality checks
+npm run test        # All tests pass
+npm run build       # Successful build
+```
 
-## Review Process
+3. **Submit PR with complete information**
+- Clear title following conventional commits
+- Detailed description of changes
+- Reference related issues
+- Include screenshots for UI changes
+- Mention breaking changes if any
 
-### PR Review Checklist
+### Pull Request Review Process
 
-- [ ] Code follows project standards
-- [ ] Tests pass and cover new functionality
-- [ ] Documentation is updated
-- [ ] No breaking changes (or properly documented)
-- [ ] Performance impact assessed
-- [ ] Security considerations addressed
+1. **Automated Checks**
+   - CI pipeline runs tests
+   - Code quality scans
+   - Security vulnerability checks
+   - Build verification
 
-### Review Timeline
+2. **Manual Review**
+   - Code review by maintainers
+   - Functional testing
+   - Security assessment
+   - Performance evaluation
 
-- Initial review: Within 2 business days
-- Follow-up reviews: As needed based on feedback
-- Merge: After approval and passing CI
+3. **Merge Requirements**
+   - All CI checks pass
+   - At least one approval from maintainers
+   - No unresolved comments
+   - Proper documentation updates
 
-## Getting Help
+## 🐛 Reporting Issues
 
-### Questions
+### Before Creating an Issue
 
-- Check existing documentation first
-- Search issues and discussions
-- Join community channels if available
-- Contact maintainers for complex questions
+1. Check existing issues
+2. Verify it's not already documented
+3. Ensure you're using the latest version
+4. Try to reproduce in a fresh environment
 
-### Development Help
+### Issue Templates
 
-- Review development setup guide
-- Check existing code for patterns
-- Ask specific technical questions in issues
-- Pair programming sessions available for major contributions
+Use appropriate templates:
+- **Bug Report**: For software defects
+- **Feature Request**: For new functionality
+- **Support Question**: For help requests
 
-## Recognition
+### Good Bug Reports Include
 
-Contributors will be acknowledged in:
+- Clear description of the problem
+- Steps to reproduce
+- Expected vs actual behavior
+- Environment details
+- Screenshots/videos if applicable
+- Error messages/logs
 
-- Project README
-- Release notes
-- Contributor documentation
-- Social media announcements (for significant contributions)
+## 🎨 Design Contributions
 
-## License
+### UI/UX Guidelines
 
-By contributing to MiniDebet, you agree that your contributions will be licensed under the project's proprietary license. All contributions become property of Ledokoz GmbH.
+- Maintain consistent design language
+- Follow accessibility standards (WCAG 2.1)
+- Mobile-first responsive design
+- Consistent color scheme and typography
+- Intuitive user flows
 
-## Contact
+### Design Process
 
-- **Email**: <jamshaid@ledokoz.com>
-- **Issues**: GitHub issues tracker
-- **Feature Requests**: Through proper channels
+1. Discuss design ideas in issues first
+2. Create mockups/wireframes
+3. Get feedback from team
+4. Implement with proper testing
+5. Iterate based on user feedback
 
-Thank you for helping make MiniDebet better!
+## 🔐 Security Contributions
+
+### Responsible Disclosure
+
+For security vulnerabilities:
+1. **DO NOT** create public issues
+2. Contact security@minidebet.com
+3. Follow our [Security Policy](SECURITY.md)
+4. Allow time for proper remediation
+
+### Security Best Practices
+
+- Validate all user inputs
+- Sanitize database queries
+- Use secure authentication methods
+- Implement proper authorization
+- Keep dependencies updated
+- Follow OWASP guidelines
+
+## 📈 Performance Optimization
+
+### Performance Guidelines
+
+- Profile before optimizing
+- Focus on user-perceived performance
+- Optimize critical paths
+- Cache appropriately
+- Minimize bundle sizes
+- Lazy load non-critical resources
+
+### Monitoring and Metrics
+
+- Track performance metrics
+- Monitor error rates
+- Measure user engagement
+- Analyze resource usage
+- Set performance budgets
+
+## 🎯 Community Engagement
+
+### Ways to Contribute Beyond Code
+
+- **Documentation**: Improve guides and tutorials
+- **Testing**: Help with QA and user testing
+- **Translation**: Localize for different languages
+- **Design**: UI/UX improvements
+- **Community**: Answer questions, mentor newcomers
+- **Feedback**: Share user insights and suggestions
+
+### Recognition
+
+Contributors are recognized through:
+- GitHub contributor list
+- Release notes mentions
+- Community spotlight features
+- Swag rewards for significant contributions
+- Early access to new features
+
+## 📚 Learning Resources
+
+### Project-Specific
+- [Architecture Documentation](docs/architecture)
+- [API Reference](docs/api)
+- [Development Guides](docs/development)
+
+### External Resources
+- [React Documentation](https://reactjs.org/)
+- [Rust Book](https://doc.rust-lang.org/book/)
+- [Cloudflare Workers Docs](https://developers.cloudflare.com/workers/)
+- [Tailwind CSS Docs](https://tailwindcss.com/)
+
+## 🆘 Getting Help
+
+### Support Channels
+
+- **GitHub Issues**: For bugs and feature requests
+- **Discussion Forums**: For general questions
+- **Community Chat**: Real-time help (Discord/Slack)
+- **Email Support**: contributors@minidebet.com
+
+### Mentorship Program
+
+New contributors can request:
+- Code review pairing sessions
+- Architecture walkthroughs
+- Guidance on contribution process
+- Help with complex issues
+
+## 📜 License Notice
+
+By contributing to MiniDebet, you agree that your contributions will be licensed under the project's proprietary license. See [LICENSE](LICENSE) for details.
+
+## 🙏 Thank You!
+
+Thank you for considering contributing to MiniDebet. Your efforts help make this project better for everyone!
+
+---
+
+*Last updated: January 2026*
