@@ -5,7 +5,7 @@ use serde_json::json;
 pub async fn main(req: Request, env: Env, _ctx: Context) -> Result<Response> {
     console_log!("Received request: {:?}", req.url());
     
-    // Handle CORS preflight requests
+    // Handle CORS preflight requests for all routes
     if req.method() == Method::Options {
         return handle_cors_preflight();
     }
@@ -15,6 +15,7 @@ pub async fn main(req: Request, env: Env, _ctx: Context) -> Result<Response> {
     router
         .get("/", |_, _| Response::ok("MiniDebet Worker API"))
         .get("/health", |_, _| Response::ok("OK"))
+        .options("/*catchall", |_, _| handle_cors_preflight())
         .post_async("/api/auth/register", register_handler)
         .post_async("/api/auth/login", login_handler)
         .post_async("/api/users", create_user_handler)
@@ -27,16 +28,17 @@ pub async fn main(req: Request, env: Env, _ctx: Context) -> Result<Response> {
 }
 
 fn handle_cors_preflight() -> Result<Response> {
-    let cors_headers = Headers::new();
+    let mut cors_headers = Headers::new();
     cors_headers.set("Access-Control-Allow-Origin", "https://minidebet.pages.dev")?;
     cors_headers.set("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS")?;
     cors_headers.set("Access-Control-Allow-Headers", "Content-Type, Authorization")?;
     cors_headers.set("Access-Control-Max-Age", "86400")?;
+    cors_headers.set("Access-Control-Allow-Credentials", "true")?;
     
-    Response::empty()
+    Ok(Response::empty()
         .unwrap()
         .with_status(204)
-        .with_headers(cors_headers)
+        .with_headers(cors_headers))
 }
 
 // Auth handlers
