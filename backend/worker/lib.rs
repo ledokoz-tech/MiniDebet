@@ -10,9 +10,11 @@ use handlers::*;
 #[event(fetch)]
 pub async fn main(req: Request, env: Env, _ctx: Context) -> Result<Response> {
     console_log!("Received request: {:?}", req.url());
+    console_log!("Request method: {:?}", req.method());
     
     // Handle CORS preflight requests for all routes
     if req.method() == Method::Options {
+        console_log!("Processing OPTIONS preflight request");
         return handle_cors_preflight();
     }
     
@@ -33,6 +35,8 @@ pub async fn main(req: Request, env: Env, _ctx: Context) -> Result<Response> {
 }
 
 fn handle_cors_preflight() -> Result<Response> {
+    console_log!("Handling CORS preflight request");
+    
     let mut cors_headers = Headers::new();
     cors_headers.set("Access-Control-Allow-Origin", "https://minidebet.pages.dev")?;
     cors_headers.set("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS")?;
