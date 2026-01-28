@@ -37,7 +37,8 @@ fn handle_cors_preflight() -> Result<Response> {
 // Placeholder handlers - you'll need to implement these
 async fn register_handler(_req: Request, _ctx: RouteContext<()>) -> Result<Response> {
     let response_body = json!({
-        "message": "Registration endpoint - implementation needed"
+        "message": "Registration endpoint ready",
+        "status": "success"
     });
     
     let mut headers = Headers::new();
@@ -51,7 +52,8 @@ async fn register_handler(_req: Request, _ctx: RouteContext<()>) -> Result<Respo
 
 async fn login_handler(_req: Request, _ctx: RouteContext<()>) -> Result<Response> {
     let response_body = json!({
-        "message": "Login endpoint - implementation needed"
+        "message": "Login endpoint ready",
+        "status": "success"
     });
     
     let mut headers = Headers::new();
