@@ -1,5 +1,5 @@
 name = "minidebet"
-main = "backend/worker/dist/worker.js"
+main = "backend/worker/build/worker.js"
 compatibility_date = "2024-01-27"
 
 # Default D1 Database Configuration (for preview/development)
