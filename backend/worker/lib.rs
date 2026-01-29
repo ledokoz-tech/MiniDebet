@@ -9,6 +9,7 @@ use handlers::*;
 
 #[event(fetch)]
 pub async fn main(req: Request, env: Env, _ctx: Context) -> Result<Response> {
+    console_log!("=== NEW WORKER VERSION ACTIVE ===");
     console_log!("Received request: {:?}", req.url());
     console_log!("Request method: {:?}", req.method());
     
@@ -21,7 +22,7 @@ pub async fn main(req: Request, env: Env, _ctx: Context) -> Result<Response> {
     let router = Router::new();
     
     router
-        .get("/", |_, _| Response::ok("MiniDebet Worker API"))
+        .get("/", |_, _| Response::ok("MiniDebet Worker API - NEW VERSION"))
         .get("/health", health_check)
         .options("/api/auth/register", |_, _| handle_cors_preflight())
         .options("/api/auth/login", |_, _| handle_cors_preflight())
