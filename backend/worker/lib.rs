@@ -23,6 +23,10 @@ pub async fn main(req: Request, env: Env, _ctx: Context) -> Result<Response> {
     router
         .get("/", |_, _| Response::ok("MiniDebet Worker API"))
         .get("/health", health_check)
+        .options("/api/auth/register", |_, _| handle_cors_preflight())
+        .options("/api/auth/login", |_, _| handle_cors_preflight())
+        .options("/api/clients", |_, _| handle_cors_preflight())
+        .options("/api/invoices", |_, _| handle_cors_preflight())
         .options("/*catchall", |_, _| handle_cors_preflight())
         .post_async("/api/auth/register", register_user)
         .post_async("/api/auth/login", login_user)
